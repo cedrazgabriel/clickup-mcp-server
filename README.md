@@ -1,0 +1,1 @@
+npx @modelcontextprotocol/inspector -e CLICKUP_API_KEY=pk_61301106_TBB2QCT2ZY4VJTB7A11336JT -e TEAM_ID=36933746 node build/index.js 
