@@ -1,7 +1,7 @@
-import { ClickUpTask } from '../types/clickup/clickup-task.js';
 import { ClickUpClient } from '../tools/clickup-client.js';
-import { ClickUpTaskMapper } from '../mappers/clickup-task.mapper.js';
 import { ErrorHandler } from '../utils/error-handler.js';
+import { TaskEntity } from '../entities/task.entity.js';
+import { TaskMapper } from '../mappers/task.mapper.js';
 
 export class UpdateClickUpTaskStatusUseCase {
   constructor(private readonly clickUpClient: ClickUpClient) {}
@@ -10,7 +10,7 @@ export class UpdateClickUpTaskStatusUseCase {
     taskId: string,
     newStatus: string,
     useCustomTaskId: boolean = true
-  ): Promise<ClickUpTask> {
+  ): Promise<TaskEntity> {
     try {
       const teamId = process.env.TEAM_ID;
       
@@ -33,7 +33,7 @@ export class UpdateClickUpTaskStatusUseCase {
 
       console.log(`[ClickUp] Status da task atualizado com sucesso para "${newStatus}"`);
       
-      return ClickUpTaskMapper.toEntity(response.data);
+      return TaskMapper.toEntity(response.data);
     } catch (error: unknown) {
       return ErrorHandler.handleClickUpError(error, taskId, newStatus);
     }
