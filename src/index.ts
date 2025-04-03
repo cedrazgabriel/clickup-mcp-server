@@ -1,4 +1,4 @@
-import { verificarVariaveisAmbiente } from "./env";
+import { verificarVariaveisAmbiente } from "./config/env";
 import { registerAllTools, startServer } from "./tools/index";
 
 // Registra todas as ferramentas
